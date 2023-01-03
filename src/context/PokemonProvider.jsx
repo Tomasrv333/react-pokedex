@@ -24,7 +24,7 @@ export const PokemonProvider = ({ children }) => {
         const res = await fetch(`${baseURL}pokemon?limit=${limit}&offset=${offset}`)
         const data = await res.json();
 
-        const promises = data.results.map(async(pokemon) => {
+        const promises = data.results.map(async pokemon => {
             const res = await fetch(pokemon.url)
             const data = await res.json();
             return data;
@@ -64,7 +64,7 @@ export const PokemonProvider = ({ children }) => {
 
     useEffect(() => {
         getAllPokemons()
-    }, [])
+    }, [offset])
 
     useEffect(() => {
         getGlobalPokemons()
